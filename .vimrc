@@ -40,7 +40,7 @@ Plug 'tpope/vim-surround'
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'jlanzarotta/bufexplorer'
-
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " Basic setup
@@ -82,16 +82,16 @@ map <C-l> :call WinMove('l')<cr>
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window
 function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-    if (match(a:key,'[jk]'))
-      wincmd v
-    else
-      wincmd s
-    endif
+    let t:curwin = winnr()
     exec "wincmd ".a:key
-  endif
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
 endfunction
 
 set splitbelow

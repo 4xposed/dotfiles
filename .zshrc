@@ -51,24 +51,32 @@ ZSH_THEME="mh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git brew ruby bundler rails zsh-syntax-highlighting pj)
 
-# User configuration
+# Exports
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 export EDITOR='vim'
+export HOMEBREW_GITHUB_API_TOKEN="" # add token here
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export PATH="/usr/local/sbin:$PATH"
+
+# load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 PROJECT_PATHS=(~/volders ~/meteor ~/ruby_projects ~/electron ~/elixir ~/angularjs ~/ruby_rpojects/slashrocket ~/ruby_projects/rails_projects)
 
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+# rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
-export ANDROID_HOME=/usr/local/opt/android-sdk
+#
+#nvm
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
+# the fuck
+
 eval "$(thefuck --alias)"
-alias rabbitmq="rabbitmq-server"
+alias fuckitmq="rabbitmq-server"
 alias funpush="ggpush -f"
-export PATH="/usr/local/sbin:$PATH"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
