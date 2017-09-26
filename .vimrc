@@ -20,7 +20,6 @@ Plug 'ervandew/supertab'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'elixir-lang/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'joukevandermaas/vim-ember-hbs'
@@ -41,6 +40,9 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'jlanzarotta/bufexplorer'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-fugitive'
+
+Plug 'posva/vim-vue'
 call plug#end()
 
 " Basic setup
@@ -55,6 +57,7 @@ set noswapfile
 imap jj <Esc>
 let mapleader=","
 filetype plugin on
+set noeol
 
 "Theme settings
 syntax enable
@@ -69,8 +72,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-" easy OSX clipboard
-set clipboard=unnamed,autoselect
 set guioptions+=a
 
 " Easier jump across split windows
@@ -134,6 +135,7 @@ set wildignore+=*/.git/*,*/.DS_Store,*/vendor/*,*/doc/*,*/tmp/*,*/node_modules/*
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_javascript_checkers = ['jshint', 'eslint']
 
 " NERDTree stuff
 autocmd StdinReadPre * let s:std_in=1
@@ -164,5 +166,10 @@ let g:syntastic_check_on_open=1
 " Strip whitespace on file save
 autocmd BufWritePre * StripWhitespace
 
+" Trim empty lines at the end of files
+autocmd FileType ruby,elixir,crystal,javascript autocmd BufWritePre <buffer> :%s/\($\n\s*\)\+\%$//e
+
 " Buffer Explorer
 nnoremap <Leader>b :BufExplorer<CR>
+set exrc
+set secure
