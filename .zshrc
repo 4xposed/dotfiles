@@ -1,10 +1,12 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/daniel/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="mh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,32 +53,27 @@ ZSH_THEME="mh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git brew ruby bundler rails zsh-syntax-highlighting pj)
 
-# Exports
+source $ZSH/oh-my-zsh.sh
 
+# Exports
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export HOMEBREW_GITHUB_API_TOKEN="" # add token here
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH="/usr/local/sbin:$PATH"
 
-# load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-PROJECT_PATHS=(~/volders ~/meteor ~/ruby_projects ~/electron ~/elixir ~/angularjs ~/ruby_rpojects/slashrocket ~/ruby_projects/rails_projects)
+PROJECT_PATHS=(~/python ~/javascript ~/volders ~/ruby_projects ~/electron ~/elixir ~/angularjs ~/ruby_rpojects/slashrocket ~/ruby_projects/rails_projects)
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 #
-#nvm
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
-# the fuck
 
 eval "$(thefuck --alias)"
 alias fuckitmq="rabbitmq-server"
 alias funpush="ggpush -f"
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
