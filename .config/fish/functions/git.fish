@@ -3,7 +3,7 @@ function gaa
 end
 
 function ggpush
-  git push origin (git_branch_name)
+  git push $argv origin (git_branch_name)
 end
 
 function gc
@@ -11,7 +11,7 @@ function gc
 end
 
 function funpush
-  ggpush -f
+  git push -f origin (git_branch_name)
 end
 
 function gco

@@ -15,21 +15,12 @@ Plug 'xolox/vim-notes'
 Plug 'scrooloose/syntastic'
 
 Plug 'sheerun/vim-polyglot'
-Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'pangloss/vim-javascript'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'plasticboy/vim-markdown'
-Plug 'fatih/vim-go'
-Plug 'derekwyatt/vim-scala'
 Plug 'keith/rspec.vim'
-Plug 'othree/html5.vim'
-Plug 'othree/es.next.syntax.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
 
 Plug 'danro/rename.vim'
 Plug 'kien/ctrlp.vim'
@@ -40,9 +31,11 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'jlanzarotta/bufexplorer'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-fugitive'
 
-Plug 'posva/vim-vue'
+Plug 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " Basic setup
@@ -54,7 +47,6 @@ set cursorcolumn
 set nobackup
 set nowritebackup
 set noswapfile
-imap jj <Esc>
 let mapleader=","
 filetype plugin on
 set noeol
@@ -128,14 +120,14 @@ command! E e
 command! Qall qall
 command! QA qall
 
-set wildignore+=*/.git/*,*/.DS_Store,*/vendor/*,*/doc/*,*/tmp/*,*/node_modules/*,*/bower_components/*
+set wildignore+=*/.git/*,*/.DS_Store,*/vendor/*,*/doc/*,*/tmp/*,*/node_modules/*,*/bower_components/*,*/deps/*
 
 "" Plugin stuff below
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_javascript_checkers = ['jshint', 'eslint']
+"let g:syntastic_javascript_checkers = ['jshint', 'eslint']
 
 " NERDTree stuff
 autocmd StdinReadPre * let s:std_in=1
@@ -167,9 +159,12 @@ let g:syntastic_check_on_open=1
 autocmd BufWritePre * StripWhitespace
 
 " Trim empty lines at the end of files
-autocmd FileType ruby,elixir,crystal,javascript autocmd BufWritePre <buffer> :%s/\($\n\s*\)\+\%$//e
+autocmd FileType ruby,elixir,crystal,rust autocmd BufWritePre <buffer> :%s/\($\n\s*\)\+\%$//e
 
 " Buffer Explorer
 nnoremap <Leader>b :BufExplorer<CR>
 set exrc
 set secure
+if &term =~ '256color'
+    set t_ut=
+endif
