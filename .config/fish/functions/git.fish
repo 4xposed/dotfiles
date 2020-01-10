@@ -1,5 +1,5 @@
 function gaa
-	git add --all
+  git add --all
 end
 
 function ggpush
