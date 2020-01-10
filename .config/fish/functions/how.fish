@@ -1,9 +1,9 @@
 function how
-	tldr $argv
+  tldr $argv
 end
 
 function be
- bundle exec $argv
+  bundle exec $argv
 end
 
 function bi
