@@ -1,15 +1,27 @@
+# Terminal settings
 set -x TERM xterm-256color
 set -x LC_ALL en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
-set -gx PATH $HOME/.cargo/bin $PATH
-set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+
+# Load Rust bins
+fish_add_path $HOME/.cargo/bin
+
+# Use GNU Core Utils
+fish_add_path /usr/local/opt/coreutils/libexec/gnubin
+
+# Use GNU tar
+fish_add_path /opt/homebrew/opt/gnu-tar/libexec/gnubin
+
+# MAC OS shenanigans
 set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 
+# Add homebrew bin directory
+fish_add_path /opt/homebrew/bin
+
+# Load ASDF
 source ~/.asdf/asdf.fish
 
-set -g fish_user_paths "/usr/local/opt/node@8/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-
-alias bi "bundle install"
-alias be "bundle exec"
-alias bu "bundle update"
+# GOPATH and GOROOT
+set -gx GOPATH $(asdf where golang)/packages
+set -gx GOROOT $(asdf where golang)/go
+fish_add_path "$(go env GOPATH)/bin"
