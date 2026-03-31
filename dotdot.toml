@@ -1,0 +1,21 @@
+[common]
+# tmux
+".tmux.conf" = "~/.tmux.conf"
+# nvim
+"nvim/init.lua" = "~/.config/nvim/init.lua"
+"nvim/config/lazy.lua" = "~/.config/nvim/lua/config/lazy.lua"
+# fish
+"fish/config.fish" = "~/.config/fish/config.fish"
+"fish/functions/git.fish" = "~/.config/fish/functions/git.fish"
+"fish/functions/safe.fish" = "~/.config/fish/functions/safe.fish"
+"fish/conf.d/fish_frozen_key_bindings.fish" = "~/.config/fish/conf.d/fish_frozen_key_bindings.fish"
+"fish/conf.d/fish_frozen_theme.fish" = "~/.config/fish/conf.d/fish_frozen_theme.fish"
+"fish/conf.d/omf.fish" = "~/.config/fish/conf.d/omf.fish"
+"fish/conf.d/zerobrew.fish" = "~/.config/fish/conf.d/zerobrew.fish"
+"omf/bundle" = "~/.config/omf/bundle"
+"omf/channel" = "~/.config/omf/channel"
+"omf/theme" = "~/.config/omf/theme"
+
+[macos]
+
+[linux]
